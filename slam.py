@@ -181,15 +181,16 @@ class SLAM():
                 break
 
         """ save trajectory"""
-        if not os.path.isdir("./result"):
-            os.makedirs("./result")
+        result_dir = self.cfg.directory.result_dir
+        if not os.path.isdir("{}".format(result_dir)):
+            os.makedirs("{}")
 
-        traj_txt_pred = "./result/poses_pred.txt"
+        traj_txt_pred = "{}/poses_pred.txt".format(result_dir)
         global_poses_arr_pred = convert_SE3_to_arr(self.global_poses_pred)
         save_traj(traj_txt_pred, global_poses_arr_pred, format='kitti')
         print('save predicted poses to file {}\n'.format(traj_txt_pred))
 
-        traj_txt_opt = "./result/poses_opt.txt"
+        traj_txt_opt = "{}/poses_opt.txt".format(result_dir)
         global_poses_arr_opt = convert_SE3_to_arr(self.global_poses_opt)
         save_traj(traj_txt_opt, global_poses_arr_opt, format='kitti')
         print('save optimized poses to file {}\n'.format(traj_txt_opt))
