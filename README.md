@@ -6,11 +6,13 @@ combined to form the topological SLAM system.
 
 ## Publications
 
-[Visual Odometry Revisited: What Should Be Learnt? 
+1. [Visual Odometry Revisited: What Should Be Learnt? 
 ](https://arxiv.org/abs/1909.09803) 
 
-[DF-VO: What Should Be Learnt for Visual Odometry?
+2. [DF-VO: What Should Be Learnt for Visual Odometry?
 ](https://arxiv.org/abs/2103.00933) 
+
+3. [Scalable Place Recognition Under Appearance Change for Autonomous Driving](https://openaccess.thecvf.com/content_ICCV_2019/html/Doan_Scalable_Place_Recognition_Under_Appearance_Change_for_Autonomous_Driving_ICCV_2019_paper.html)
 
 
 ```
@@ -33,28 +35,36 @@ combined to form the topological SLAM system.
       primaryClass={cs.CV}
 }
 
+@inproceedings{doan2019scalable,
+  title={Scalable place recognition under appearance change for autonomous driving},
+  author={Doan, Anh-Dzung and Latif, Yasir and Chin, Tat-Jun and Liu, Yu and Do, Thanh-Toan and Reid, Ian},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={9319--9328},
+  year={2019}
+}
+
 ```
 
-<img src='docs/source/misc/dfvo_eg.gif' width=640 height=320>
-
+## Demo:
+<a href="https://youtu.be/RhywSFHe5GM"><img src='misc/topo_slam.png' width=640 height=320>
 
 ### Contents
 1. [Requirements](#part-1-requirements)
 2. [Prepare dataset](#part-2-download-dataset-and-models)
-3. [DF-VO](#part-3-DF-VO)
+3. [Run example](#part-3-run-example)
 4. [Result evaluation](#part-4-result-evaluation)
 
 
 ### Part 1. Requirements
 
-This code was tested with Python 3.6, CUDA 9.0, Ubuntu 16.04, and [PyTorch-1.1](https://pytorch.org/).
+This code was tested with Python 3.6, CUDA 10.0, Ubuntu 16.04, and [PyTorch-1.0](https://pytorch.org/).
 
 We suggest use [Anaconda](https://www.anaconda.com/distribution/) for installing the prerequisites.
 
 ```
 cd envs
-conda env create -f requirement.yml -p {ANACONDA_DIR/envs/topo_slam} # install prerequisites
-conda activate dfvo  # activate the environment [dfvo]
+conda env create -f min_requirements.yml -p {ANACONDA_DIR/envs/topo_slam} # install prerequisites
+conda activate topo_slam  # activate the environment [topo_slam]
 ```
 
 ### Part 2. Download dataset and models
@@ -66,49 +76,21 @@ ln -s KITTI_ODOMETRY/sequences dataset/kitti_odom/odom_data
 
 For our trained models, please visit [here](https://www.dropbox.com/sh/9by21564eb0xloh/AABHFMlWd_ja14c5wU4R1KUua?dl=0) to download the models and save the models into the directory `model_zoo/`.
 
-### Part 3. DF-VO
-We have created some examples for running the algorithm.
-
+### Part 3. Run example
 ``` 
-# Example 1: run default kitti setup
-python apis/run.py -d options/examples/default_configuration.yml  
-
-# Example 2: Run custom kitti setup
-python apis/run.py \
--d options/examples/default_configuration.yml \
--c options/examples/kitti_stereo_train_icra.yml \
---no_confirm
-
-# More examples and our experiments can be found in scripts/experiment.sh
+# run default kitti setup
+python main.py -d options/examples/default.yml  -r data/kitti_odom
 ```
+More configuration examples can be found in [configuration examples](https://github.com/Huangying-Zhan/DF-VO/tree/master/options/examples).
 
 The result (trajectory pose file) is saved in `result_dir` defined in the configuration file.
-Please check the `options/examples/default_configuration.yml` or [Configuration Documentation](https://df-vo.readthedocs.io/en/latest/rsts/configuration.html) for reference. 
+Please check [Configuration Documentation](https://df-vo.readthedocs.io/en/latest/rsts/configuration.html) for reference. 
 
 ### Part 4. Result evaluation
-<img src='docs/source/misc/dfvo_result.png' width=320 height=480>
-
-<img src='docs/source/misc/dfvo_result2.png' width=400 height=100>
-
-The original results, including related works, can be found [here](https://www.dropbox.com/sh/u7x3rt4lz6zx8br/AADshjd33Q3TLCy2stKt6qpJa?dl=0).
-
-#### KITTI
-[KITTI Odometry benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) contains 22 stereo sequences, in which 11 sequences are provided with ground truth. The 11 sequences are used for evaluating visual odometry. 
-
-```
-python tools/evaluation/odometry/eval_odom.py --result result/tmp/0 --align 6dof
-```
-
-For more information about the evaluation toolkit, please check the [toolbox page](https://github.com/Huangying-Zhan/kitti_odom_eval) or the [wiki page](https://github.com/Huangying-Zhan/DF-VO/wiki).
-
-### Part 5. Run your own dataset
-
-We also provide a guideline to run DF-VO on your own dataset.
-Please check [Run own dataset](https://df-vo.readthedocs.io/en/latest/rsts/run_own_dataset.html) for more details.
+Please check [here](https://github.com/Huangying-Zhan/DF-VO#part-4-result-evaluation) for evaluating the result.
 
 ### License
-For academic usage, the code is released under the permissive MIT license. Our intension of sharing the project is for research/personal purpose. For any commercial purpose, please contact the authors. 
-
+Please check License file.
 
 ### Acknowledgement
 Some of the codes were borrowed from the excellent works of [monodepth2](https://github.com/nianticlabs/monodepth2), [LiteFlowNet](https://github.com/twhui/LiteFlowNet) and [pytorch-liteflownet](https://github.com/sniklaus/pytorch-liteflownet). The borrowed files are licensed under their original license respectively.
