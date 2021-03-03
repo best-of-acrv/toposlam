@@ -1,41 +1,31 @@
 # Introduction
 
-This repo implements a topological SLAM system. 
-Deep Visual Odometry ([DF-VO](https://github.com/Huangying-Zhan/DF-VO)) and [Visual Place Recognition](https://github.com/dadung/Visual-Localization-Filtering) are 
-combined to form the topological SLAM system.
-
-## Publications
+This repo implements the system described in the paper:
 
 [Visual Odometry Revisited: What Should Be Learnt? 
 ](https://arxiv.org/abs/1909.09803) 
 
-[DF-VO: What Should Be Learnt for Visual Odometry?
-](https://arxiv.org/abs/2103.00933) 
+Huangying Zhan, Chamara Saroj Weerasekera, Jiawang Bian, Ian Reid
 
+The demo video can be found [here](https://www.youtube.com/watch?v=Nl8mFU4SJKY).
 
 ```
-@INPROCEEDINGS{zhan2019dfvo,
-  author={H. {Zhan} and C. S. {Weerasekera} and J. -W. {Bian} and I. {Reid}},
-  booktitle={2020 IEEE International Conference on Robotics and Automation (ICRA)}, 
-  title={Visual Odometry Revisited: What Should Be Learnt?}, 
-  year={2020},
-  volume={},
-  number={},
-  pages={4203-4210},
-  doi={10.1109/ICRA40945.2020.9197374}}
+# The paper is accepted to ICRA-2020. Updated bibtex will be provided in the future.
 
-@misc{zhan2021dfvo,
-      title={DF-VO: What Should Be Learnt for Visual Odometry?}, 
-      author={Huangying Zhan and Chamara Saroj Weerasekera and Jia-Wang Bian and Ravi Garg and Ian Reid},
-      year={2021},
-      eprint={2103.00933},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{zhan2019dfvo,
+  title={Visual Odometry Revisited: What Should Be Learnt?},
+  author={Zhan, Huangying and Weerasekera, Chamara Saroj and Bian, Jiawang and Reid, Ian},
+  journal={arXiv preprint arXiv:1909.09803},
+  year={2019}
 }
-
 ```
 
-<img src='docs/source/misc/dfvo_eg.gif' width=640 height=320>
+<img src='docs/misc/dfvo_eg.gif' width=640 height=320>
+
+This repo includes
+1. the frame-to-frame tracking system **DF-VO**;
+2. evaluation scripts for visual odometry; 
+3. trained models and VO results
 
 
 ### Contents
@@ -47,13 +37,13 @@ combined to form the topological SLAM system.
 
 ### Part 1. Requirements
 
-This code was tested with Python 3.6, CUDA 9.0, Ubuntu 16.04, and [PyTorch-1.1](https://pytorch.org/).
+This code was tested with Python 3.6, CUDA 9.0, Ubuntu 16.04, and [PyTorch](https://pytorch.org/).
 
 We suggest use [Anaconda](https://www.anaconda.com/distribution/) for installing the prerequisites.
 
 ```
 cd envs
-conda env create -f requirement.yml -p {ANACONDA_DIR/envs/topo_slam} # install prerequisites
+conda env create -f requirement.yml -p {ANACONDA_DIR/envs/dfvo} # install prerequisites
 conda activate dfvo  # activate the environment [dfvo]
 ```
 
@@ -67,28 +57,25 @@ ln -s KITTI_ODOMETRY/sequences dataset/kitti_odom/odom_data
 For our trained models, please visit [here](https://www.dropbox.com/sh/9by21564eb0xloh/AABHFMlWd_ja14c5wU4R1KUua?dl=0) to download the models and save the models into the directory `model_zoo/`.
 
 ### Part 3. DF-VO
-We have created some examples for running the algorithm.
+We have created different configurations for running the algrithm.
 
 ``` 
 # Example 1: run default kitti setup
-python apis/run.py -d options/examples/default_configuration.yml  
+python apis/run.py -d options/kitti/default_configuration.yml  
 
 # Example 2: Run custom kitti setup
-python apis/run.py \
--d options/examples/default_configuration.yml \
--c options/examples/kitti_stereo_train_icra.yml \
---no_confirm
-
-# More examples and our experiments can be found in scripts/experiment.sh
+# kitti_default_configuration.yml and kitti_stereo_0.yml are merged
+python apis/run.py -d options/kitti/default_configuration.yml -c options/kitti/kitti_stereo_0.yml  
 ```
 
 The result (trajectory pose file) is saved in `result_dir` defined in the configuration file.
-Please check the `options/examples/default_configuration.yml` or [Configuration Documentation](https://df-vo.readthedocs.io/en/latest/rsts/configuration.html) for reference. 
+Please check the `options/kitti/default_configuration.yml` for reference. 
+FIXME: add link to RTD page
 
 ### Part 4. Result evaluation
-<img src='docs/source/misc/dfvo_result.png' width=320 height=480>
+<img src='docs/misc/dfvo_result.png' width=320 height=480>
 
-<img src='docs/source/misc/dfvo_result2.png' width=400 height=100>
+<img src='docs/misc/dfvo_result2.png' width=400 height=100>
 
 The original results, including related works, can be found [here](https://www.dropbox.com/sh/u7x3rt4lz6zx8br/AADshjd33Q3TLCy2stKt6qpJa?dl=0).
 
@@ -104,7 +91,8 @@ For more information about the evaluation toolkit, please check the [toolbox pag
 ### Part 5. Run your own dataset
 
 We also provide a guideline to run DF-VO on your own dataset.
-Please check [Run own dataset](https://df-vo.readthedocs.io/en/latest/rsts/run_own_dataset.html) for more details.
+Please check ...
+FIXME: add RTD link
 
 ### License
 For academic usage, the code is released under the permissive MIT license. Our intension of sharing the project is for research/personal purpose. For any commercial purpose, please contact the authors. 

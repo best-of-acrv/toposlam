@@ -1,0 +1,5 @@
+Besides the required packages in the requirements.yaml, the following two libraries are also required to manually installed.
+
+1. "pangolin" for visualization, following the install instructions here: https://github.com/uoip/pangolin
+
+2. "g2opy" for pose graph optimization, following the install instructions here: https://github.com/uoip/g2opy
