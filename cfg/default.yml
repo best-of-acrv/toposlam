@@ -4,9 +4,9 @@
 dataset: kitti_odom                                       # dataset [kitti_odom, kitti_raw, tum-1/2/3, adelaide1/2]
 seed: 4869                                                # random seed
 image:
-    height: 370                                         # image height
-    width: 1226                                            # image width
-    ext: png                                              # image file extension for data loading
+    height: 192                                         # image height
+    width: 640                                            # image width
+    ext: jpg                                               # image file extension for data loading
 seq: "04"                                                 # sequence to run
 frame_step: 1                                             # frame step
 
