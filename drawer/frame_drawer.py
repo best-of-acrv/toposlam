@@ -21,7 +21,7 @@ class FrameDrawer():
         self.should_quit = False
 
         # Create display window
-        pangolin.CreateWindowAndBind('DF-VO', 1280, 640)
+        pangolin.CreateWindowAndBind('TopoSLAM', 1280, 640)
         gl.glEnable(gl.GL_DEPTH_TEST)
         gl.glEnable(gl.GL_BLEND)
         gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA)
@@ -343,16 +343,18 @@ class FrameDrawer():
             self.pause_ckbox.SetVal(False)
 
         if key == "b":  # bird-view mode
-            self.bird_view = True
-            self.drive_view = False
-            self.bird_view_ckbox.SetVal(True)
-            self.drive_view_ckbox.SetVal(False)
+            self.bird_view = not(self.bird_view)
+            self.bird_view_ckbox.SetVal(self.bird_view)
+            if self.bird_view:
+                self.drive_view = False
+                self.drive_view_ckbox.SetVal(False)
 
         if key == "d":  # drive-view mode
-            self.bird_view = False
-            self.drive_view = True
-            self.bird_view_ckbox.SetVal(False)
-            self.drive_view_ckbox.SetVal(True)
+            self.drive_view = not(self.drive_view)
+            self.drive_view_ckbox.SetVal(self.drive_view)
+            if self.drive_view:
+                self.bird_view = False
+                self.bird_view_ckbox.SetVal(False)
 
         if key == "o":  # switch for visualization of optimized poses
             self.opt_poses = not self.opt_poses
