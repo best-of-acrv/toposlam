@@ -29,6 +29,7 @@ class Dataset():
     def get_image(self, img_id):
         img_path = os.path.join(self.img_dir, img_id) + '.' + self.ext
         img = cv2.imread(img_path)
+        img = cv2.resize(img, (self.width, self.height))
 
         return img
 
