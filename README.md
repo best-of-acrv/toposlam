@@ -105,40 +105,40 @@ If using TopoSLAM in your work, please cite our papers below as appropriate. Top
 
 - our [ICRA paper on visual odometry](https://arxiv.org/pdf/1909.09803.pdf):
 
-```bibtex
-@inproceedings{zhan2019dfvo,
-  author={H. {Zhan} and C. S. {Weerasekera} and J. -W. {Bian} and I. {Reid}},
-  booktitle={2020 IEEE International Conference on Robotics and Automation (ICRA)},
-  title={Visual Odometry Revisited: What Should Be Learnt?},
-  year={2020},
-  volume={},
-  number={},
-  pages={4203-4210},
-  doi={10.1109/ICRA40945.2020.9197374}}
-```
+  ```bibtex
+  @inproceedings{zhan2019dfvo,
+    author={H. {Zhan} and C. S. {Weerasekera} and J. -W. {Bian} and I. {Reid}},
+    booktitle={2020 IEEE International Conference on Robotics and Automation (ICRA)},
+    title={Visual Odometry Revisited: What Should Be Learnt?},
+    year={2020},
+    volume={},
+    number={},
+    pages={4203-4210},
+    doi={10.1109/ICRA40945.2020.9197374}}
+  ```
 
 - our recent [arXiv paper on DF-VO](https://arxiv.org/pdf/2103.00933.pdf):
 
-```bibtex
-@article{zhan2021df,
-  title={DF-VO: What Should Be Learnt for Visual Odometry?},
-  author={Zhan, Huangying and Weerasekera, Chamara Saroj and Bian, Jia-Wang and Garg, Ravi and Reid, Ian},
-  journal={arXiv preprint arXiv:2103.00933},
-  year={2021}
-}
-```
+  ```bibtex
+  @article{zhan2021df,
+    title={DF-VO: What Should Be Learnt for Visual Odometry?},
+    author={Zhan, Huangying and Weerasekera, Chamara Saroj and Bian, Jia-Wang and Garg, Ravi and Reid, Ian},
+    journal={arXiv preprint arXiv:2103.00933},
+    year={2021}
+  }
+  ```
 
 - our [ICCV paper on scalable place recognition](https://openaccess.thecvf.com/content_ICCV_2019/papers/Doan_Scalable_Place_Recognition_Under_Appearance_Change_for_Autonomous_Driving_ICCV_2019_paper.pdf)
 
-```bibtex
-@inproceedings{doan2019scalable,
-  title={Scalable place recognition under appearance change for autonomous driving},
-  author={Doan, Anh-Dzung and Latif, Yasir and Chin, Tat-Jun and Liu, Yu and Do, Thanh-Toan and Reid, Ian},
-  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages={9319--9328},
-  year={2019}
-}
-```
+  ```bibtex
+  @inproceedings{doan2019scalable,
+    title={Scalable place recognition under appearance change for autonomous driving},
+    author={Doan, Anh-Dzung and Latif, Yasir and Chin, Tat-Jun and Liu, Yu and Do, Thanh-Toan and Reid, Ian},
+    booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+    pages={9319--9328},
+    year={2019}
+  }
+  ```
 
 TODO: delete everything form here down once successfully migrated
 
