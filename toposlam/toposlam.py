@@ -2,6 +2,7 @@ from .dfvo.libs.dfvo_module import DFVO_Mod
 from .dfvo.libs.geometry.camera_modules import SE3
 from .dfvo.libs.geometry.pose_graph_optimizer import PoseGraphOptimizer
 from .lcd.loop_closure_detect import LoopClosureDetect
+from .loaders.kitti import KITTIOdom as Loader
 from .vis.frame_drawer import FrameDrawer
 
 
